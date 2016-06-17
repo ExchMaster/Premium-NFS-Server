@@ -31,9 +31,9 @@
       "defaultValue": "Standard_D12_V2",
       "allowedValues": [
         "Standard_D12_V2",
-        "Standard_DS4",
-        "Standard_DS13",
-        "Standard_DS14"
+        "Standard_D14_V2",
+        "Standard_G5",
+        "Standard_GS5"
       ],
       "metadata": {
         "description": "Size of the VM used to for the NFS Server."
@@ -82,14 +82,14 @@
     {
       "type": "Microsoft.Storage/storageAccounts",
       "name": "[concat('nfs', parameters('uniquePrefix'), 'sa')]",
-      "apiVersion": "2015-05-01-preview",
+      "apiVersion": "2015-06-15",
       "location": "[variables('location')]",
       "properties": {
         "accountType": "Standard_LRS"
       }
     },
     {
-      "apiVersion": "2015-05-01-preview",
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/publicIPAddresses",
       "name": "[concat('nfs', parameters('uniquePrefix'), 'ip')]",
       "location": "[variables('location')]",
@@ -98,7 +98,7 @@
       }
     },
     {
-      "apiVersion": "2015-05-01-preview",
+      "apiVersion": "2015-06-15",
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[concat('nfs', parameters('uniquePrefix'), 'nic')]",
       "location": "[variables('location')]",
@@ -212,7 +212,7 @@
    {
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "name": "[concat('nfs', parameters('uniquePrefix'), 'vm/ext')]",
-      "apiVersion": "2015-05-01-preview",
+      "apiVersion": "2015-06-15",
       "location": "[variables('location')]",
       "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/nfs', parameters('uniquePrefix'), 'vm')]"
